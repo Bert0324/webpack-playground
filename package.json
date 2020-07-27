@@ -3,8 +3,8 @@
     "cross-env": "cross-env TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\"",
     "dev": "yarn cross-env webpack-dev-server --config",
     "build": "yarn cross-env webpack --config",
-    "dev:base": "yarn dev config/base/webpack.config.ts",
-    "build:base": "yarn build config/base/webpack.config.ts"
+    "dev:base": "yarn dev base/webpack.config.ts",
+    "build:base": "yarn build base/webpack.config.ts"
   },
   "devDependencies": {
     "@types/tapable": "^1.0.6",
