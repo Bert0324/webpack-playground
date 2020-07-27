@@ -26,7 +26,8 @@ export const PostCssLoader: RuleSetUseItem = {
     }
 }
 
-export default getBaseConfig('base', dir => ([{
+export default getBaseConfig(dir => ([{
+    entry: `${dir}/base/src/index.ts`,
     module: {
         rules: [
             {
@@ -64,7 +65,7 @@ export default getBaseConfig('base', dir => ([{
                      */
                     loader: 'url-loader',
                     options: {
-                        limit: 5 * 1024, // less than 5kb to compile as base64
+                        limit: 5 * 1024 * 1024, // less than 5mb to compile as base64
                         outputPath: '/images/'
                     }
                 }

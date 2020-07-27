@@ -5,12 +5,8 @@
   ],
   "scripts": {
     "cross-env": "cross-env TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\"",
-    "dev": "yarn cross-env webpack-dev-server --config",
-    "build": "yarn cross-env webpack --config",
-    "dev:base": "yarn dev base/webpack.config.ts",
-    "build:base": "yarn build base/webpack.config.ts",
-    "dev:advanced": "yarn dev advanced/webpack.config.ts",
-    "build:advanced": "yarn build advanced/webpack.config.ts"
+    "dev": "yarn cross-env webpack-dev-server --config \"${MODULE}/webpack.config.ts\"",
+    "build": "yarn cross-env webpack --config \"${MODULE}/webpack.config.ts\""
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",

@@ -7,15 +7,13 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 const dir = __dirname.replace('config', '');
 export const getBaseConfig = (
-	path: string,
 	getConfig: (dir: string) => Configuration[]
 ): Configuration => (merge({
 	mode: 'production',
-	entry: `${dir}/${path}/src/index.ts`,
 	devtool: 'inline-source-map',
 	output: {
 		path: `${dir}/dist`,
-		filename: `output.[contentHash:8].js`
+		filename: `[name].[contentHash:8].js`
 	},
 	module: {
 		rules: [
