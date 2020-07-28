@@ -35,17 +35,17 @@ export const getBaseConfig = (
 	plugins: [
 		new HtmlWebpackPlugin({
 			inject: true,
-			template: `${dir}/public/index.html`
+			template: `${dir}/public/index.html`,
 		}),
 		// define variables in runtime
 		new DefinePlugin({
 			ENV: JSON.stringify('production')
 		}),
-		// clean output file before build 
+		// clean output file
 		new CleanWebpackPlugin()
 	],
 	devServer: {
-		contentBase: `${dir}/dist/index.html`,
+		contentBase: `${dir}/dist`,
 		compress: true,
 		port: 8081,
 		open: true,
