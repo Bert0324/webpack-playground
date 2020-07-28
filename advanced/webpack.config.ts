@@ -31,8 +31,7 @@ export default getBaseConfig(dir => ([{
         // use separated css file instead of <style>
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contentHash:8].css'
-        }),
-        
+        })
     ],
     optimization: {
         minimizer: [
@@ -46,6 +45,29 @@ export default getBaseConfig(dir => ([{
              * <https://github.com/NMFR/optimize-css-assets-webpack-plugin>
              */
             new OptimizeCssAssetsWebpackPlugin({})
-        ]
+        ],
+        splitChunks: {
+            // whether for async imported files
+            chunks: 'all',
+            cacheGroups: {
+                // third party codes
+                vendor: {
+                    name: 'vendor',
+                    // larger number means higher priority
+                    priority: 1,
+                    test: /node_modules/,
+                    minSize: 0,
+                    minChunks: 1
+                },
+                // common codes
+                common: {
+                    name: 'common',
+                    priority: 0,
+                    minSize: 0,
+                    // at least used 2 times
+                    minChunks: 2
+                }
+            }
+        }
     }
 }]));

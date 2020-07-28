@@ -18,13 +18,18 @@ export const getBaseConfig = (
 	module: {
 		rules: [
 			{
-				test: /\.tsx?$/,
+				test: /\.(tsx|ts|js)?$/,
 				/**
-				 * loader is from back to end within the array to load
-				 * `ts-loader` already includes `babel-loader`
-				 * <https://github.com/TypeStrong/ts-loader/blob/master/package.json>
+				 * babel7, is different tsc and ts-loader
 				 */
-				loader: ['ts-loader'],
+				loader: [
+					{
+						loader: 'babel-loader',
+						options: {
+							babelrc: true
+						}
+					}
+				],
 				exclude: /node_modules/
 			}
 		]
