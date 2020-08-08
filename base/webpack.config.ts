@@ -65,8 +65,8 @@ export default getBaseConfig(dir => ([{
                      */
                     loader: 'url-loader',
                     options: {
-                        limit: 5 * 1024 * 1024, // less than 5mb to compile as base64
-                        outputPath: '/images/'
+                        limit: 5 * 1024, // less than 5kb to compile as base64
+                        outputPath: 'images/'
                     }
                 }
             }
