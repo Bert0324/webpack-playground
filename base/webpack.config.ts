@@ -5,7 +5,7 @@ import postCssImport from 'postcss-import';
 import postCssCssnano from 'cssnano';
 import { RuleSetUseItem } from 'webpack';
 
-export const getCssLoader: RuleSetUseItem = (importLoaders: number) => ({
+export const getCssLoader = (importLoaders: number): RuleSetUseItem => ({
     loader: 'css-loader',
     options: {
         // <https://github.com/webpack-contrib/css-loader#importloaders>

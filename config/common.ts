@@ -18,13 +18,18 @@ export const getBaseConfig = (
 	module: {
 		rules: [
 			{
-				test: /\.tsx?$/,
+				test: /\.(tsx|ts|js)?$/,
 				/**
-				 * loader is from back to end within the array to load
-				 * `ts-loader` already includes `babel-loader`
-				 * <https://github.com/TypeStrong/ts-loader/blob/master/package.json>
+				 * babel7, is different tsc and ts-loader
 				 */
-				loader: ['ts-loader'],
+				loader: [
+					{
+						loader: 'babel-loader',
+						options: {
+							babelrc: true
+						}
+					}
+				],
 				exclude: /node_modules/
 			}
 		]
@@ -35,17 +40,17 @@ export const getBaseConfig = (
 	plugins: [
 		new HtmlWebpackPlugin({
 			inject: true,
-			template: `${dir}/public/index.html`
+			template: `${dir}/public/index.html`,
 		}),
 		// define variables in runtime
 		new DefinePlugin({
 			ENV: JSON.stringify('production')
 		}),
-		// clean output file before build 
+		// clean output file
 		new CleanWebpackPlugin()
 	],
 	devServer: {
-		contentBase: `${dir}/dist/index.html`,
+		contentBase: `${dir}/dist`,
 		compress: true,
 		port: 8081,
 		open: true,
